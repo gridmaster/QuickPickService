@@ -43,8 +43,8 @@ namespace QuickPickService
                 faves = fixParam(faves);
 
                 while (tix-- > 0)
-                {
-                    tixs.tickets.Add(Picks.GetPickObject(max, picks, pbmax, faves, pbfave));
+                {   //int max, int picks, int pbmax, string faves, int pbfave
+                    tixs.tickets.Add(Picks.GetPicks(max, picks, pbmax, faves, pbfave));
                 }
 
             }
@@ -55,10 +55,43 @@ namespace QuickPickService
 
             string json = JsonConvert.SerializeObject(tixs.tickets);
 
-            json = json.Replace("\"ball6\":0,", "").Replace(",\"pBall\":0", "").Replace(",\"id\":0", "");
+            json = json.Replace(",\"pBall\":0", "").Replace(",\"id\":0", "");
 
+            WebOperationContext.Current.OutgoingResponse.Headers.Add("Access-Control-Allow-Origin", "*");
+            WebOperationContext.Current.OutgoingResponse.ContentType = "application/json";
             return json;
         }
+
+        //[WebGet(UriTemplate = "/QuickPicks?max={max}&picks={picks}&pbmax={pbmax}&faves={faves}&pbfave={pbfave}&tix={tix}", ResponseFormat = WebMessageFormat.Json)]
+        //public string QuickPicks(int max, int picks, int pbmax, string faves, int pbfave, int tix)
+        //{
+        //    Log.WriteLog(new LogEvent(string.Format("QuickPickService - QuickPicks()"), "Start"));
+
+        //    Tickets tixs = new Tickets();
+        //    tixs.tickets = new List<Ticket>();
+
+        //    try
+        //    {
+        //        tix = fixTix(tix);
+        //        faves = fixParam(faves);
+
+        //        while (tix-- > 0)
+        //        {
+        //            tixs.tickets.Add(Picks.GetPickObject(max, picks, pbmax, faves, pbfave));
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return "Server was not able to process your request " + ex.Message;
+        //    }
+
+        //    string json = JsonConvert.SerializeObject(tixs.tickets);
+
+        //    json = json.Replace("\"ball6\":0,", "").Replace(",\"pBall\":0", "").Replace(",\"id\":0", "");
+
+        //    return json;
+        //}
 
         private static int fixTix(int tix)
         {

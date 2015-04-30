@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System.Collections.Generic;
+using System.ServiceModel;
 using QuickPickService.Models;
 using QuickPickService.Models.Requests;
 using QuickPickService.Models.ViewModels;

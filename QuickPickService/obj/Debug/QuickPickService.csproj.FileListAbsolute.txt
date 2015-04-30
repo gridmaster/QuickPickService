@@ -8,3 +8,4 @@ C:\Projects\QuickPickService\QuickPickService\bin\EntityFramework.SqlServer.xml
 C:\Projects\QuickPickService\QuickPickService\bin\Newtonsoft.Json.xml
 C:\Projects\QuickPickService\QuickPickService\obj\Debug\QuickPickService.dll
 C:\Projects\QuickPickService\QuickPickService\obj\Debug\QuickPickService.pdb
+C:\Projects\QuickPickService\QuickPickService\obj\Debug\QuickPickService.csprojResolveAssemblyReference.cache
